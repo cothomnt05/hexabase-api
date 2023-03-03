@@ -2,16 +2,14 @@ package collections;
 
 import org.json.JSONObject;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class Workspace {
-	public static String createNewWorkspace(String token, String workspaceName) {
+	public static String createNewWorkspace(String workspaceName) {
 		JSONObject body = new JSONObject();
 		body.put("name", workspaceName);
 
-		Response res = RestAssured.given().baseUri(constants.API.BaseURI).basePath(constants.API.CREATE_NEW_WORKSPACE)
-				.header("Content-Type", "application/json").auth().oauth2(token).body(body.toString()).when().post();
+		Response res = Request.POST(constants.API.BaseURI, constants.API.CREATE_NEW_WORKSPACE, body.toString());
 
 		int statusCode = res.getStatusCode();
 		if (statusCode != 200) {
@@ -25,22 +23,34 @@ public class Workspace {
 		return bodyRes.getString("w_id");
 	}
 
-	public static Response getUserInfo(String token) {
-		return RestAssured.given().baseUri(constants.API.BaseURI).basePath(constants.API.GET_USER_INFO)
-				.header("Content-Type", "application/json").auth().oauth2(token).when().get();
-
+	public static Response getUserInfo() {
+		return Request.GET(constants.API.BaseURI, constants.API.GET_USER_INFO);
 	}
 
-	public static String getCurrentWorkspaceID(String token) {
-		JSONObject resObj = new JSONObject(getUserInfo(token).getBody().asString());
+	public static String getCurrentWorkspaceID() {
+		JSONObject resObj = new JSONObject(getUserInfo().getBody().asString());
 
 		return resObj.getString("current_workspace_id");
 	}
 
-	public static String getCurrentUserID(String token) {
-		JSONObject resObj = new JSONObject(getUserInfo(token).getBody().asString());
+	public static String getCurrentUserID() {
+		JSONObject resObj = new JSONObject(getUserInfo().getBody().asString());
 
 		return resObj.getString("u_id");
+	}
+
+	public static void archiveWorkspace(String workspaceID) {
+		JSONObject body = new JSONObject();
+		body.put("w_id", workspaceID);
+
+		Response res = Request.POST(constants.API.BaseURI_V1, constants.API.ARCHIVE_WORKSPACE, body.toString());
+		int statusCode = res.getStatusCode();
+
+		if (statusCode != 200) {
+			System.out.println("Can't delete workspace");
+		} else {
+			System.out.println("Delete workspace successfully");
+		}
 	}
 
 }

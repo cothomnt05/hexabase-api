@@ -28,4 +28,6 @@ public class API {
 
 	}
 
+	public static final String ARCHIVE_WORKSPACE = "/v1/api/archive_workspace";
+
 }

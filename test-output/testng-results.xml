@@ -2,19 +2,23 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-02T07:21:36Z" name="Default suite" finished-at="2023-03-02T07:21:40Z" duration-ms="4172">
+  <suite started-at="2023-03-03T02:46:06Z" name="Default suite" finished-at="2023-03-03T02:46:13Z" duration-ms="7231">
     <groups>
     </groups>
-    <test started-at="2023-03-02T07:21:36Z" name="Default test" finished-at="2023-03-02T07:21:40Z" duration-ms="4172">
+    <test started-at="2023-03-03T02:46:06Z" name="Default test" finished-at="2023-03-03T02:46:13Z" duration-ms="7231">
       <class name="test.Datastore">
-        <test-method is-config="true" signature="before()[pri:0, instance:test.Datastore@65e98b1c]" started-at="2023-03-02T07:21:36Z" name="before" finished-at="2023-03-02T07:21:38Z" duration-ms="2220" status="PASS">
+        <test-method is-config="true" signature="before()[pri:0, instance:test.Datastore@6ad82709]" started-at="2023-03-03T02:46:06Z" name="before" finished-at="2023-03-03T02:46:09Z" duration-ms="2570" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- before -->
-        <test-method signature="TC_02_create_and_update_created_item()[pri:0, instance:test.Datastore@65e98b1c]" started-at="2023-03-02T07:21:38Z" name="TC_02_create_and_update_created_item" finished-at="2023-03-02T07:21:40Z" duration-ms="1926" status="PASS">
+        <test-method signature="TC_01_create_new_datastore_from_template()[pri:0, instance:test.Datastore@6ad82709]" started-at="2023-03-03T02:46:09Z" name="TC_01_create_new_datastore_from_template" finished-at="2023-03-03T02:46:12Z" duration-ms="3606" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_02_create_and_update_created_item -->
+        </test-method> <!-- TC_01_create_new_datastore_from_template -->
+        <test-method is-config="true" signature="after()[pri:0, instance:test.Datastore@6ad82709]" started-at="2023-03-03T02:46:12Z" name="after" finished-at="2023-03-03T02:46:13Z" duration-ms="1032" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
       </class> <!-- test.Datastore -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

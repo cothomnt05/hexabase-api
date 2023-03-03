@@ -1,0 +1,22 @@
+{
+  "item" : {
+    "field_id" : "field_id",
+    "title" : "TITLE test",
+    "assignee" : "person in charge"
+  },
+  "return_item_result" : true,
+  "exec_children_post_procs" : true,
+  "as_params" : {
+    "param1" : "value1",
+    "param2" : "value2"
+  },
+  "access_key_updates" : {
+    "overwrite" : true,
+    "ignore_action_settings" : true,
+    "apply_related_ds" : true,
+    "groups_to_publish" : [ ],
+    "roles_to_publish" : [ ],
+    "users_to_publish" : [ "{{currentUserId}}" ]
+  },
+  "related_ds_items" : { }
+}

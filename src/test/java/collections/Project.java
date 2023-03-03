@@ -6,14 +6,13 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class Project {
-	public static List<String> getTemplateProject(String token) {
+	public static List<String> getTemplateProject() {
 		List<String> listTempProject = new ArrayList<String>();
-		Response res = RestAssured.given().baseUri(constants.API.BaseURI).basePath(constants.API.GET_TEMPLATE_PROJECT)
-				.header("Content-Type", "application/json").auth().oauth2(token).when().get();
+
+		Response res = Request.GET(constants.API.BaseURI, constants.API.GET_TEMPLATE_PROJECT);
 
 		JSONObject bodyRes = new JSONObject(res.getBody().asString());
 		JSONArray categories = bodyRes.getJSONArray("categories");
@@ -27,8 +26,7 @@ public class Project {
 		return listTempProject;
 	}
 
-	public static String createNewProjectFromTemplate(String token, String jaName, String enName, String tp_id,
-			String workspace_id) {
+	public static String createNewProjectFromTemplate(String jaName, String enName, String tp_id, String workspace_id) {
 		JSONObject body = new JSONObject();
 		JSONObject name = new JSONObject();
 		name.put("ja", jaName);
@@ -36,11 +34,9 @@ public class Project {
 		body.put("name", name);
 		body.put("tp_id", tp_id);
 		body.put("workspace_id", workspace_id);
-		System.out.println(body.toString());
 
-		Response res = RestAssured.given().baseUri(constants.API.BaseURI)
-				.basePath(constants.API.CREATE_NEW_PROJECT_FROM_TEMPLATE).header("Content-Type", "application/json")
-				.auth().oauth2(token).body(body.toString()).when().post();
+		Response res = Request.POST(constants.API.BaseURI, constants.API.CREATE_NEW_PROJECT_FROM_TEMPLATE,
+				body.toString());
 
 		int statusCode = res.getStatusCode();
 		if (statusCode != 200) {
@@ -50,14 +46,11 @@ public class Project {
 		}
 
 		JSONObject bodyRes = new JSONObject(res.getBody().asString());
-		System.out.println(bodyRes.toString());
 		return bodyRes.getString("project_id");
 	}
 
-	public static JSONObject getLastProj(String token) {
-		Response res = RestAssured.given().baseUri(constants.API.BaseURI_V1)
-				.basePath(constants.API.GET_LAST_PROJECT_ID_V1).header("Content-Type", "application/json").auth()
-				.oauth2(token).when().get();
+	public static JSONObject getLastProj() {
+		Response res = Request.GET(constants.API.BaseURI_V1, constants.API.GET_LAST_PROJECT_ID_V1);
 
 		JSONArray bodyArr = new JSONArray(res.getBody().asString());
 		System.out.println(bodyArr);
@@ -65,8 +58,8 @@ public class Project {
 		return (JSONObject) bodyArr.get(bodyArr.length() - 1);
 	}
 
-	public static String getLastProjID(String token) {
-		return getLastProj(token).get("application_id").toString();
+	public static String getLastProjID() {
+		return getLastProj().get("application_id").toString();
 	}
 
 }
