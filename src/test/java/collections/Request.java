@@ -1,5 +1,7 @@
 package collections;
 
+import java.util.Random;
+
 import constants.Variables;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -29,10 +31,15 @@ public class Request {
 				.oauth2(Variables.TOKEN).body(body).when().patch();
 	}
 
-	public static Response DELETE(String baseURI, String basePath) {
+	public static Response DELETE(String baseURI, String basePath, String body) {
 
 		return RestAssured.given().baseUri(baseURI).basePath(basePath).header("Content-Type", "application/json").auth()
-				.oauth2(Variables.TOKEN).when().delete();
+				.oauth2(Variables.TOKEN).body(body).when().delete();
+	}
+
+	public static int generateRandom() {
+		Random rand = new Random();
+		return rand.nextInt(9999);
 	}
 
 }

@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-03T02:46:06Z" name="Default suite" finished-at="2023-03-03T02:46:13Z" duration-ms="7231">
+  <suite started-at="2023-03-10T02:29:45Z" name="Default suite" finished-at="2023-03-10T02:30:01Z" duration-ms="16576">
     <groups>
     </groups>
-    <test started-at="2023-03-03T02:46:06Z" name="Default test" finished-at="2023-03-03T02:46:13Z" duration-ms="7231">
+    <test started-at="2023-03-10T02:29:45Z" name="Default test" finished-at="2023-03-10T02:30:01Z" duration-ms="16576">
       <class name="test.Datastore">
-        <test-method is-config="true" signature="before()[pri:0, instance:test.Datastore@6ad82709]" started-at="2023-03-03T02:46:06Z" name="before" finished-at="2023-03-03T02:46:09Z" duration-ms="2570" status="PASS">
+        <test-method is-config="true" signature="before()[pri:0, instance:test.Datastore@7817fd62]" started-at="2023-03-10T02:29:45Z" name="before" finished-at="2023-03-10T02:29:47Z" duration-ms="2422" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- before -->
-        <test-method signature="TC_01_create_new_datastore_from_template()[pri:0, instance:test.Datastore@6ad82709]" started-at="2023-03-03T02:46:09Z" name="TC_01_create_new_datastore_from_template" finished-at="2023-03-03T02:46:12Z" duration-ms="3606" status="PASS">
+        <test-method signature="TC_01_create_new_datastore_from_template()[pri:0, instance:test.Datastore@7817fd62]" started-at="2023-03-10T02:29:47Z" name="TC_01_create_new_datastore_from_template" finished-at="2023-03-10T02:29:52Z" duration-ms="5111" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_01_create_new_datastore_from_template -->
-        <test-method is-config="true" signature="after()[pri:0, instance:test.Datastore@6ad82709]" started-at="2023-03-03T02:46:12Z" name="after" finished-at="2023-03-03T02:46:13Z" duration-ms="1032" status="PASS">
+        <test-method signature="TC_02_create_and_update_created_item()[pri:0, instance:test.Datastore@7817fd62]" started-at="2023-03-10T02:29:52Z" name="TC_02_create_and_update_created_item" finished-at="2023-03-10T02:29:55Z" duration-ms="2989" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_02_create_and_update_created_item -->
+        <test-method signature="TC_03_delete_created_item()[pri:0, instance:test.Datastore@7817fd62]" started-at="2023-03-10T02:29:55Z" name="TC_03_delete_created_item" finished-at="2023-03-10T02:29:58Z" duration-ms="2341" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_03_delete_created_item -->
+        <test-method signature="TC_04_creat_new_group_and_add_new_user_to_group()[pri:0, instance:test.Datastore@7817fd62]" started-at="2023-03-10T02:29:58Z" name="TC_04_creat_new_group_and_add_new_user_to_group" finished-at="2023-03-10T02:30:01Z" duration-ms="2975" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_04_creat_new_group_and_add_new_user_to_group -->
+        <test-method is-config="true" signature="after()[pri:0, instance:test.Datastore@7817fd62]" started-at="2023-03-10T02:30:01Z" name="after" finished-at="2023-03-10T02:30:01Z" duration-ms="682" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- after -->

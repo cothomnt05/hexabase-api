@@ -1,0 +1,7 @@
+{
+  "user_id" : "<currentUserId>",
+  "workspace_id" : "<workspaceId>",
+  "project_id" : "<projectId>",
+  "template_name" : "<templateName>",
+  "lang_cd" : "en"
+}

@@ -1,0 +1,10 @@
+{
+  "project_id" : "<project_id>",
+  "datastore_id" : "<datastore_id>",
+  "conditions" : [ ],
+  "page" : 1,
+  "per_page" : 100,
+  "return_count_only" : false,
+  "omit_total_items" : true,
+  "include_fields_data" : true
+}

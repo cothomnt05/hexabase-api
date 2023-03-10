@@ -1,0 +1,6 @@
+{
+  "email" : "{{registerEmail}}",
+  "w_id" : "{{workspaceId}}",
+  "g_id" : "{{group_gId}}",
+  "group_id" : "{{group_gId}}"
+}

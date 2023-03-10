@@ -1,0 +1,7 @@
+{
+  "workspace-id" : "<workspaceId>",
+  "name" : "Name Group",
+  "display_id" : "<randomDispalyId>",
+  "parent_g_id" : "<parentGroup_gId>",
+  "is_empty_group" : true
+}

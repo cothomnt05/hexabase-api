@@ -7,6 +7,7 @@
         <methods>
           <include name="TC_01_create_new_datastore_from_template"/>
           <include name="before"/>
+          <include name="after"/>
         </methods>
       </class> <!-- test.Datastore -->
     </classes>

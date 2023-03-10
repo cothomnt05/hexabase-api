@@ -1,15 +1,18 @@
 package test;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import constants.Variables;
+
 public class Datastore {
 	String workspaceName;
-	String jaName, enName;
-	String lang_cd;
+	String jaName, enName, groupName;
 
 	@BeforeClass
 	public void before() {
@@ -20,44 +23,77 @@ public class Datastore {
 		workspaceName = "TestAPI" + today;
 		jaName = "Project JA" + present;
 		enName = "Project EN" + present;
-		lang_cd = "ja";
+		groupName = "Group" + today;
+
 		// Login
 		collections.Login.login();
 	}
 
 	@Test
-	public void TC_01_create_new_datastore_from_template() {
+	public void TC_01_create_new_datastore_from_template() throws FileNotFoundException {
 		// Create new workspace
 		collections.Workspace.createNewWorkspace(workspaceName);
-		String current_workspace_id = collections.Workspace.getCurrentWorkspaceID();
+		System.out.println(Variables.WORKSPACE_ID);
+		Assert.assertTrue(collections.Workspace.getListWorkspaceName().contains(workspaceName));
+		Assert.assertTrue(collections.Workspace.getListWorkspaceID().contains(Variables.WORKSPACE_ID));
 
 		// Create new project
-		String u_id = collections.Workspace.getCurrentUserID();
-		String tp_id = collections.Project.getTemplateProject().get(0);
+		Variables.USER_ID = collections.Workspace.getCurrentUserID();
+		Variables.TEMPLATE_PROJECT_ID = collections.Project.getTemplateProject().get(0);
 
-		String projId = collections.Project.createNewProjectFromTemplate(jaName, enName, tp_id, current_workspace_id);
+		collections.Project.createNewProjectFromTemplate(jaName, enName);
+		System.out.println(Variables.PROJECT_ID);
 
 		// Create new datastore from template
-//		String project_id = collections.Project.getLastProjID();
+		Variables.TEMPLATE_DATASTORE_ID = collections.Datastore.getTemplateNameDatastore().get(0);
+		collections.Datastore.createDatastoreFromTemplate();
 
-		String template_name = collections.Datastore.getTemplateNameDatastore(projId, current_workspace_id).get(0);
-		collections.Datastore.createDatastoreFromTemplate(u_id, current_workspace_id, projId, template_name, lang_cd);
+		System.out.println(collections.Datastore.getListDatastoreID().toString());
 	}
 
 	@Test
-	public void TC_02_create_and_update_created_item() {
-		String current_workspace_id = collections.Workspace.getCurrentWorkspaceID();
-		String tp_id = collections.Project.getTemplateProject().get(0);
-		System.out.println(
-				collections.Project.createNewProjectFromTemplate("testJA", "testEN", tp_id, current_workspace_id));
+	public void TC_02_create_and_update_created_item() throws FileNotFoundException {
+		// Select created datastore
+		Variables.DATASTORE_ID = collections.Datastore.getLastDatastoreID();
 
-		System.out.println(collections.Project.getLastProjID());
+		// Create new Item
+		collections.Datastore.createNewItemDatastore();
 
+		// Update created Item
+		Variables.REV_NO = collections.Datastore.getRevNoItem();
+		Variables.ACTION_ID = collections.Datastore.getListActionID().get(0);
+		collections.Datastore.updateItemDatastore();
+	}
+
+	@Test
+	public void TC_03_delete_created_item() throws FileNotFoundException {
+		// Select created datastore
+		Variables.DATASTORE_ID = collections.Datastore.getLastDatastoreID();
+
+		// Create new Item
+		Variables.USER_ID = collections.Workspace.getCurrentUserID();
+		collections.Datastore.createNewItemDatastore();
+
+		// Delete created Item
+		collections.Datastore.deleteItemDatastore();
+	}
+
+	@Test
+	public void TC_04_creat_new_group_and_add_new_user_to_group() throws FileNotFoundException {
+		// Create new group
+		Variables.WORKSPACE_ID = collections.Workspace.getCurrentWorkspace();
+		Variables.DISPLAY_ID = collections.Project.getDisplayId();
+		Variables.PARENT_GROUP_ID = collections.Group.getParentGroupID();
+		collections.Group.createGroup(groupName);
+
+		// Add new user to group
+		Variables.EMAIL = collections.Workspace.getEmail();
+		collections.Group.addUserToGroup();
 	}
 
 	@AfterClass
 	public static void after() {
-		collections.Workspace.archiveWorkspace(collections.Workspace.getCurrentWorkspaceID());
+		collections.Workspace.archiveWorkspace(collections.Workspace.getCurrentWorkspace());
 
 	}
 

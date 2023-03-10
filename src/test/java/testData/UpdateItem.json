@@ -1,0 +1,23 @@
+{
+  "rev_no" : 1,
+  "action_id" : "<actionId>",
+  "item" : {
+    "field_id" : "field_idsdasd",
+    "title" : "Title Itemdda",
+    "assignee" : "person ind charge"
+  },
+  "exec_children_post_procs" : true,
+  "as_params" : {
+    "param1" : "value11",
+    "param2" : "value21"
+  },
+  "access_key_updates" : {
+    "overwrite" : true,
+    "ignore_action_settings" : true,
+    "apply_related_ds" : true,
+    "groups_to_publish" : [ ],
+    "roles_to_publish" : [ ],
+    "users_to_publish" : [ ]
+  },
+  "related_ds_items" : { }
+}

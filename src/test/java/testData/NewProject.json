@@ -1,0 +1,8 @@
+{
+  "name" : {
+    "ja" : "<ProjectName JA>",
+    "en" : "<ProjectName EN>"
+  },
+  "tp_id" : "<templateId>",
+  "workspace_id" : "<currentWorkspaceId>"
+}
